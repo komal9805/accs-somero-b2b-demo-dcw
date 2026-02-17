@@ -240,7 +240,7 @@ async function performInitialSearch(config, urlParams) {
     await search({
       phrase: '', // search all products in the category
       currentPage: page ? Number(page) : 1,
-      pageSize: 8,
+      pageSize: 9,
       sort: sort ? getSortFromParams(sort) : [{
         attribute: 'position',
         direction: 'DESC',
@@ -265,7 +265,7 @@ async function performInitialSearch(config, urlParams) {
     await search({
       phrase: q || '',
       currentPage: page ? Number(page) : 1,
-      pageSize: 8,
+      pageSize: 9,
       sort: getSortFromParams(sort),
       filter: [
         {
