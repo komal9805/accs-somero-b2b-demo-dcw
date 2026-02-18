@@ -75,6 +75,13 @@
     margin-block-end: var(--spacing-small);
 }
 
+/* Product grid overrides for product discovery drop-in */
+.block.product-list-page .product-discovery-product-list {
+    /* Override inline custom properties coming from the drop-in */
+    --imageWidth: auto !important;
+    --imageHeight: auto !important;
+}
+
 .block.product-list-page .product-discovery-product-actions {
     display: flex;
     flex-direction: row;
