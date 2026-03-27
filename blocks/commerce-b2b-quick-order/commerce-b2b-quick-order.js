@@ -19,7 +19,7 @@ import { rootLink } from '../../scripts/commerce.js';
 import '../../scripts/initializers/quick-order.js';
 import '../../scripts/initializers/search.js';
 import '../../scripts/initializers/cart.js';
-import '../../scripts/initializers/pdp.js';
+import '../../scripts/initializers/pdp-quick-order.js';
 
 export default async function decorate(block) {
   const fragment = document.createRange().createContextualFragment(`
@@ -58,11 +58,12 @@ export default async function decorate(block) {
       },
     ],
     className: 'quick-order-items',
-    handleAddToCart: async (values) => {
+    handleAddToCart: async (values, clearItems) => {
       if (!values.length) return;
 
       try {
         await cartApi.addProductsToCart(values);
+        clearItems();
         window.location.href = rootLink('/cart');
       } catch (error) {
         // eslint-disable-next-line consistent-return
