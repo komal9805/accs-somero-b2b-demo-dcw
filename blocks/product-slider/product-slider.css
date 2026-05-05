@@ -30,11 +30,9 @@
 
 .block.product-slider .product-discovery-product-list__grid {
   display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
+  flex-flow: row nowrap;
   gap: var(--spacing-small);
-  overflow-x: auto;
-  overflow-y: hidden;
+  overflow: auto hidden;
   scroll-behavior: smooth;
   scroll-snap-type: x mandatory;
   padding-block-end: var(--spacing-xsmall);
@@ -50,8 +48,7 @@
 
 .block.product-slider .product-discovery-product-actions {
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  flex-flow: row wrap;
   gap: var(--spacing-xxsmall);
   position: relative;
 }

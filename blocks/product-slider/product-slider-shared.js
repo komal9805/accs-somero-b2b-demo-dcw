@@ -155,16 +155,21 @@ export async function decorateProductCarousel(block, options) {
     });
   }
 
-  let searchOk = false;
-  for (let i = 0; i < searchAttempts.length; i += 1) {
+  const trySearchAttempts = async (idx = 0) => {
+    if (idx >= searchAttempts.length) return false;
     try {
-      await search(searchAttempts[i], { scope: searchScope });
-      searchOk = true;
-      break;
+      await search(searchAttempts[idx], { scope: searchScope });
+      return true;
     } catch (err) {
-      console.warn(`${errorContext}: search attempt ${i + 1}/${searchAttempts.length} failed`, err?.message || err);
+      console.warn(
+        `${errorContext}: search attempt ${idx + 1}/${searchAttempts.length} failed`,
+        err?.message || err,
+      );
+      return trySearchAttempts(idx + 1);
     }
-  }
+  };
+
+  const searchOk = await trySearchAttempts();
   if (!searchOk) {
     console.error(`${errorContext}: error loading products for categories`, categoryIds.length ? categoryIds : categoryPath);
   }
