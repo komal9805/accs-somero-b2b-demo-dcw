@@ -1,35 +1,4 @@
-const e = `
-  fragment PRICE_RANGE_FRAGMENT on PriceRange {
-    minimum_price {
-      regular_price {
-        value
-        currency
-      }
-      final_price {
-        value
-        currency
-      }
-      discount {
-        percent_off
-        amount_off
-      }
-    }
-    maximum_price {
-      regular_price {
-        value
-        currency
-      }
-      final_price {
-        value
-        currency
-      }
-      discount {
-        percent_off
-        amount_off
-      }
-    }
-  }
-`, _ = `
+const e = ``, _ = `
   fragment CUSTOMIZABLE_OPTIONS_FRAGMENT on SelectedCustomizableOption {
     type
     customizable_option_uid
@@ -186,9 +155,6 @@ const e = `
     }
     only_x_left_in_stock
     stock_status
-    price_range {
-      ...PRICE_RANGE_FRAGMENT
-    }
   }
   ... on SimpleCartItem {
     available_gift_wrapping {
@@ -228,9 +194,6 @@ const e = `
       thumbnail {
         label
         url
-      }
-      price_range {
-        ...PRICE_RANGE_FRAGMENT
       }
       price_tiers {
         quantity
