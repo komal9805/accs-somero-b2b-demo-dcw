@@ -70,7 +70,6 @@ export default async function decorate(block) {
         requisitionListUid,
         routeRequisitionListGrid: () => rootLink(`${CUSTOMER_REQUISITION_LISTS_PATH}`),
         getProductData: async (skus) => {
-          // IMPORTANT: requisition-list view expects raw CS product shape with `price` / `priceRange`.
           const products = await pdpApi.getProductsData(skus.map((sku) => ({ sku })), true);
           return products?.map(normalizeProductForRequisitionList) ?? null;
         },
